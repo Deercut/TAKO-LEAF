@@ -1,0 +1,68 @@
+﻿@model TakoLeaf.Models.Adherent
+@{
+    Layout = "_LayoutConnecte";
+    ViewBag.Title = "Profil";
+}
+
+<link rel="stylesheet" href="~/CSS/Zoutils.css" />
+
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+        
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(model => model.Prenom, new { @class = "textbox"})
+            
+                @Html.ValidationMessageFor(model => model.Prenom)
+            </div>
+
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(model => model.Nom, new { @class = "textbox" })
+          
+                @Html.ValidationMessageFor(model => model.Nom)
+            </div>
+
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(model => model.Date_naissance, new { @type = "date", @class = "textbox" })
+                
+                @Html.ValidationMessageFor(model => model.Date_naissance)
+            </div>
+
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(model => model.Adresse.Rue, new { @class = "textbox"})
+            
+                @Html.ValidationMessageFor(model => model.Adresse.Rue)
+            </div>
+
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(model => model.Adresse.CodePostal, new { @class = "textbox" })
+             
+                @Html.ValidationMessageFor(model => model.Adresse.CodePostal)
+            </div>
+
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(model => model.Adresse.Ville, new { @class = "textbox" })
+               
+                @Html.ValidationMessageFor(model => model.Adresse.Ville)
+            </div>
+
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(model => model.Telephone, new { @type = "tel", @class = "textbox" })
+               
+                @Html.ValidationMessageFor(model => model.Telephone)
+            </div>
+
+            @Html.HiddenFor(model => model.Adresse.Id)
+            @Html.HiddenFor(model => model.AdresseId)
+            <!-- Submit Button-->
+
+            <button class="valider" type="submit">Modifier</button>
+
+
+
+
+        
+           
+        }
+    </div>
+  

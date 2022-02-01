@@ -1,0 +1,73 @@
+﻿@model TakoLeaf.ViewModels.ProviderViewModel
+@{
+    Layout = "_LayoutConnecte";
+    ViewBag.Title = "Modification Ressource";
+}
+
+<link rel="stylesheet" href="~/CSS/Zoutils.css" />
+
+    <h2 class="text-center"> Modification des Ressources</h2>
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+            <table>
+                <tr>
+                    <th>Intitule</th>
+                    <th>Adresse</th>
+                    <th>Tarif Journalier</th>
+                    <th>Categorie</th>
+                    <th>Action</th>
+                </tr>
+
+                @for (int i = 0; i < Model.Ressources.Count; i++)
+                {
+                    <tr>
+                        <td>@Html.TextBoxFor(m => m.Ressources[i].Intitule, new { @class = "textbox" })</td>
+                        <td>@Html.TextBoxFor(m => m.Ressources[i].Adresse.Rue, new { @class = "textbox" })</td>
+                        <td>@Html.TextBoxFor(m => m.Ressources[i].Adresse.CodePostal, new { @class = "textbox" })</td>
+                        <td>@Html.TextBoxFor(m => m.Ressources[i].Adresse.Ville, new { @class = "textbox" })</td>
+                        <td>@Html.TextBoxFor(m => m.Ressources[i].TarifJournalier, new { @class = "textbox" }) </td>
+                        <td>@Html.DropDownListFor(m => m.Ressources[i].Categorie, (SelectList)ViewBag.Cate)</td>
+                        <td><button class="supprimer" style="width:auto;font-size : 12px;">@Html.ActionLink("Supprimer la ressource", "SupprimerRessource", "ProfilUser", new { id = Model.Ressources[i].Id })</button></td>
+
+                    </tr>
+
+
+                    @Html.HiddenFor(m => m.Ressources[i].Id)
+                    @Html.HiddenFor(m => m.Ressources[i].Disponible)
+                }
+
+            </table>
+
+
+            @*@for (int i = 0; i < Model.Ressources.Count; i++)
+            {
+                <div>
+                    @Html.LabelFor(m => m.Ressources[i].Intitule)
+                    @Html.TextBoxFor(m => m.Ressources[i].Intitule)
+
+                    @Html.LabelFor(m => m.Ressources[i].Adresse)
+                    @Html.TextBoxFor(m => m.Ressources[i].Adresse)
+
+                    @Html.LabelFor(m => m.Ressources[i].TarifJournalier)
+                    @Html.TextBoxFor(m => m.Ressources[i].TarifJournalier)
+
+                    @Html.LabelFor(m => m.Ressources[i].Categorie)
+                    @Html.DropDownListFor(m => m.Ressources[i].Categorie, (SelectList)ViewBag.Cate)
+                </div>
+
+                @Html.HiddenFor(m => m.Ressources[i].Id)
+                @Html.HiddenFor(m => m.Ressources[i].Disponible)
+            }*@
+
+            @Html.HiddenFor(m => m.Provider.Id)
+
+
+            <button class="valider" type="submit">Modifier</button>
+            <button class="valider">@Html.ActionLink("Retour au profil", "ProfilProvider", "ProfilUser", new { id = Model.Provider.AdherentId })</button>
+        }
+        <br />
+
+
+    </div>
+

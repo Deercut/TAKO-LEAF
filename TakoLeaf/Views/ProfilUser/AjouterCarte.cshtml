@@ -1,0 +1,50 @@
+﻿@model TakoLeaf.ViewModels.UtilisateurViewModel
+@{
+    Layout = "_LayoutConnecte";
+    ViewBag.Title = "Ajout Carte";
+}
+
+<link rel="stylesheet" href="~/CSS/Actualitest.css" />
+<link rel="stylesheet" href="~/CSS/Zoutils.css" />
+
+<div class="container">
+
+    @using (Html.BeginForm())
+    {
+
+
+        <h2>Information sur votre carte</h2>
+
+        <div class="form-floating mb-3">
+            @Html.TextBoxFor(model => model.Carte.Titulaire, new { @class = "textbox", placeholder = "Titulaire carte bleu" })
+           
+            @Html.ValidationMessageFor(model => model.Carte.Titulaire)
+        </div>
+
+        <div class="form-floating mb-3">
+            @Html.TextBoxFor(model => model.Carte.NumeroCarte, new { @class = "textbox", placeholder = "Titulaire" })
+        
+            @Html.ValidationMessageFor(model => model.Carte.NumeroCarte)
+        </div>
+
+        <div class="form-floating mb-3">
+            @Html.TextBoxFor(model => model.Carte.ExpirDate, new { @class = "textbox", placeholder = "Date d'Expiration" })
+
+            @Html.ValidationMessageFor(model => model.Carte.ExpirDate)
+        </div>
+
+        <div class="form-floating mb-3">
+            @Html.TextBoxFor(model => model.Carte.Crypto, new { @class = "textbox", placeholder = "Titulaire" })
+           
+            @Html.ValidationMessageFor(model => model.Carte.Crypto)
+        </div>
+
+        @Html.HiddenFor(p => p.Consumer.Id)
+        <!-- Submit Button-->
+        <button class="valider" type="submit">Créer</button>
+
+    }
+
+
+
+</div>

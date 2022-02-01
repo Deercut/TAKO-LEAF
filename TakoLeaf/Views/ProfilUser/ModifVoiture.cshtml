@@ -1,0 +1,70 @@
+﻿@model TakoLeaf.ViewModels.UtilisateurViewModel
+@{
+    Layout = "_LayoutConnecte";
+    ViewBag.Title = "Modification Voiture";
+}
+
+<link rel="stylesheet" href="~/CSS/Zoutils.css" />
+
+<h1 class="text-center"> Indiquer les informations du véhicule à ajouter </h1>
+<div class="container">
+    <div class="row">
+        @using (Html.BeginForm())
+        {
+            @for (int i = 0; i < Model.Voitures.Count; i++)
+            {
+                <div class="col">
+                    <h2>Voiture n°@(i + 1)</h2>
+                   
+                        @Html.TextBoxFor(model => model.Voitures[i].Immatriculation, new { @readonly = "readonly", @class = "textbox", placeholder = "Plaque Immatriculation" })
+                        @Html.LabelFor(model => model.Voitures[i].Immatriculation)
+                        @Html.ValidationMessageFor(model => model.Voitures[i].Immatriculation)
+                  
+
+                    
+                        @Html.TextBoxFor(model => model.Voitures[i].Titulaire, new { @class = "textbox", placeholder = "Titulaire" })
+                        @Html.LabelFor(model => model.Voitures[i].Titulaire)
+                        @Html.ValidationMessageFor(model => model.Voitures[i].Titulaire)
+                   
+
+                  
+                        @Html.DropDownListFor(model => model.Voitures[i].Carburant, (SelectList)ViewBag.SelectList)
+                        @Html.LabelFor(model => model.Voitures[i].Carburant)
+                 
+
+                 
+                        @Html.TextBoxFor(model => model.Voitures[i].Annee, new { @class = "textbox", placeholder = "Annee" })
+                        @Html.LabelFor(model => model.Voitures[i].Annee)
+                        @Html.ValidationMessageFor(model => model.Voitures[i].Annee)
+           
+
+                        @Html.DropDownListFor(model => model.Marques[i], (SelectList)ViewBag.Marques)
+                        @Html.LabelFor(model => model.Marque.Nom)
+         
+
+                        @Html.DropDownListFor(model => model.Modeles[i], (SelectList)ViewBag.Modele)
+                        @Html.LabelFor(model => model.Modele.Nom)
+                  
+
+                    @Html.HiddenFor(v => v.Voitures[i].Id)
+                    <button class="valider">@Html.ActionLink("Supprimer la voiture", "SuppressionVoiture", "ProfilUser", new { id = Model.Voitures[i].Id })</button>
+                    <br />
+                    <br />
+
+                    <button class="valider" type="submit">Modifier véhicules</button>
+                </div>
+
+                @Html.HiddenFor(m => m.Consumer.Id)
+
+
+
+            }
+        }
+    </div>
+
+
+
+
+
+</div>
+

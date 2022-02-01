@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+
+    <link rel="stylesheet" href="~/CSS/_LayoutAdmin.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+    <!-- BOOSTRAP CSS-->
+    <link rel="stylesheet" href="~/site/css/bootstrap.css">
+
+
+
+
+
+</head>
+<body>
+
+    <!--Début Section du Header-->
+    <section>
+        <header>
+            <div class="imgALERT">
+                <a href="#"><img src="~/IMG/ICONE ADMIN/BELL.png"></a>
+            </div>
+            <div class="AdminIMG"><img src="~/IMG/AVATAR ADMIN/AVATAR-ADMIN.png"></div>
+            <div class="logo"><img src="~/IMG/TAKO ECO new.png"></div>
+            <h1 class="titremidheader">Tako Leaf</h1>
+
+        </header>
+    </section>
+
+
+    <!--FIn Section du Header-->
+
+
+    <section class="PAGEMID">
+
+
+
+        <div class="menu">
+            <ul>
+                <li><a>@Html.ActionLink("Dashboard", "dashboard", "admin")</a></li>
+                <li> <a>@Html.ActionLink("Messagerie", "MessagesRecus", "Messagerie")</a></li>
+                <li>@Html.ActionLink("Comptes", "gestioncomptes", "admin")</li>
+                <li> <a>@Html.ActionLink("Transactions", "AfficherTransactions", "Admin")</a></li>
+                <li><a>@Html.ActionLink("Articles", "gestionarticles", "admin")</a></li>
+                <li><a>@Html.ActionLink("Home", "Index", "Home")</a></li>
+            </ul>
+        </div>
+        <div class="menuIMG">
+            <img src="~/IMG/ICONE ADMIN/Group.png">
+            <img src="~/IMG/ICONE ADMIN/Envelope Closed.png">
+            <img src="~/IMG/ICONE ADMIN/Person.png">
+            <img src="~/IMG/ICONE ADMIN/Bar Chart.png">
+            <img src="~/IMG/ICONE ADMIN/Pencil 2.png">
+            <img src="~/IMG/ICONE ADMIN/Icone Home.png" />
+
+        </div>
+
+
+        @RenderBody()
+
+
+    </section>
+
+
+
+
+
+
+    <!--Section footer-->
+
+    <section class="footerBot">
+        <footer class="footer-items">
+        </footer>
+
+
+
+
+
+    </section>
+
+
+
+
+    <!--FIN Section footer-->
+    <!-- D'abord on vas mettre Jquery-->
+    <script src="~/jquery-3.6.0.js"></script>
+
+    <!-- Puis on vas mettre boostrap.JS-->
+    <script src="./site/js/bootstrap.bundle.js"></script>
+
+
+    @*<script src="~/js/_Layout.js"></script>*@
+
+
+
+
+
+</body>
+</html>

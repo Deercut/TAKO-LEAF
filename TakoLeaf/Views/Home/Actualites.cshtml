@@ -1,0 +1,58 @@
+﻿@model List<TakoLeaf.Models.Article>
+@{
+    Layout = "_LayoutConnecte";
+    ViewBag.Title = "Actualités";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/CSS/Actualitest.css" />
+    <title>Articles</title>
+
+
+</head>
+<body>
+
+    <div class="leTout">
+        <h1 class="titrePage">Bienvenue sur le fil d'actualité de TakoLeaf'</h1>
+
+        <div class="conteneur">
+
+            @foreach (var item in Model)
+            {
+                <article class="article">
+                  
+                    <div class="titreA">
+                        <h3>@item.Titre</h3>
+                    </div>
+                    <div class="corpA">
+                        <p>@Html.Raw(@item.Texte)</p>
+                    </div>
+                    <div class="heure">
+                        <p>Publié le : @item.DatePublication.ToShortDateString()</p>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            string editLink1 = "/Admin/PublicationArticle";
+                            string editLink2 = "/Admin/SuppressionArticle?id=" + item.Id;
+                            string editLink3 = "/Admin/ModifierArticle?id=" + item.Id;
+
+                            <a href="@editLink3"><img class="icon" src="~/IMG/ICONE ADMIN/ModifArticle.png" /></a>
+                            <a href="@editLink2"><img class="icon" src="~/IMG/ICONE ADMIN/DeleteIcon.png" /></a>
+                            <a href="@editLink1"><img class="icon" src="~/IMG/ICONE ADMIN/plus.png" /></a>
+
+                        }
+
+                    </div>
+                </article>
+
+            }
+
+        </div>
+    </div>
+
+
+</body>
+</html>
